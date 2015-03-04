@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 import argparse
 import csv
 import logging
@@ -12,7 +12,7 @@ def image_to_csv(input_file):
     output_file = prefix + ".csv"
     logging.debug("Converting %s to %s.", input_file, output_file)
     with Image.open(input_file) as image, \
-            open(output_file, "x", newline="") as f:
+            open(output_file, "wb") as f:
         image = image.convert("1") # convert to black and white
         csv_writer = csv.writer(f)
         width, height = image.size
