@@ -2,6 +2,7 @@
 import argparse
 import csv
 import logging
+import multiprocessing
 import os
 
 from PIL import Image
@@ -30,5 +31,4 @@ if __name__ == "__main__":
     level = logging.DEBUG if args.verbose else logging.INFO
     logging.basicConfig(format='%(levelname)s: %(message)s', level=level)
 
-    for input_file in args.input_files:
-        image_to_csv(input_file)
+    multiprocessing.Pool().map(image_to_csv, args.input_files)
